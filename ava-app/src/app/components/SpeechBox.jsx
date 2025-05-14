@@ -1,15 +1,14 @@
 'use client';
-import { useSpeech } from '../context/SpeechContext';
+
+import { useState } from "react";
 
 export default function SpeechBox() {
-  const { lang, setLang } = useSpeech();
-
+  const [lang,setLang] = useState("فارسی")
   return (
     <div className="absolute left-0 mt-[14px] rounded-xl w-[179px] h-[37px] text-[#626262]">
       <div className="flex justify-between items-center w-full">
         <label className="text-[14px] whitespace-nowrap">زبان گفتار:</label>
 
-        {/* باکس انتخاب با فلش سمت چپ */}
         <div className="relative w-[105px] h-[37px]">
           <select
             value={lang}
@@ -20,7 +19,6 @@ export default function SpeechBox() {
             <option value="en">انگلیسی</option>
           </select>
 
-          {/* فلش سمت چپ */}
           <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
             <svg className="w-3 h-3 fill-current text-[#00BA9F]" viewBox="0 0 10 6">
               <path d="M0 0l5 6 5-6H0z" />

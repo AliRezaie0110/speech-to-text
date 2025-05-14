@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Mic, Upload, Link as LinkIcon } from 'lucide-react';
 import SpeechRecorder from './SpeechRecorder';
 import SpeechBox from './SpeechBox';
+import FileUploader from './FileUploader';
+import LinkInput from './LinkInput';
 
 export default function SpeechTabs() {
   const [activeTab, setActiveTab] = useState('record');
@@ -26,7 +28,6 @@ export default function SpeechTabs() {
   return (
     <div className="relative">
       <div className="w-[653px] h-[477px] mx-auto">
-        {/* Tabs */}
         <div className="flex w-[432px]">
           {tabs.map(tab => {
             const isActive = tab.id === activeTab;
@@ -45,11 +46,9 @@ export default function SpeechTabs() {
           })}
         </div>
 
-        {/* Content */}
         <div
-          className={`rounded-2xl w-[653px] h-[429px] p-6 flex flex-col justify-center items-center ${
-            activeTab === 'record' ? 'rounded-tr-none' : ''
-          }`}
+          className={`rounded-2xl w-[653px] h-[429px] p-6 flex flex-col justify-center items-center ${activeTab === 'record' ? 'rounded-tr-none' : ''
+            }`}
           style={{ border: `1px solid ${activeColor}` }}
         >
           {renderTabContent()}
@@ -61,26 +60,9 @@ export default function SpeechTabs() {
   );
 }
 
-// فایل‌ آپلود
-function FileUploader() {
-  return (
-    <div className="w-full">
-      <label className="block mb-2 text-gray-700">انتخاب فایل صوتی:</label>
-      <input type="file" accept="audio/*" className="block w-full" />
-    </div>
-  );
-}
 
-// ورودی لینک
-function LinkInput() {
-  return (
-    <div className="w-full">
-      <label className="block mb-2 text-gray-700">آدرس لینک صوتی:</label>
-      <input
-        type="text"
-        placeholder="https://example.com/audio.mp3"
-        className="w-full border p-2 rounded"
-      />
-    </div>
-  );
-}
+
+
+
+
+

@@ -1,5 +1,4 @@
 import './globals.css';
-import { SpeechProvider } from '../app/context/SpeechContext';
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -24,9 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className="flex h-screen bg-gray-50">
-        <SpeechProvider>
           {children}
-        </SpeechProvider>
       </body>
     </html>
   );

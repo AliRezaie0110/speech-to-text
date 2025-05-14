@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "IRANSans";
-  src: url("/fonts/IRANSans/woff2/IRANSansX-Black.woff2");
+  src: url("/fonts/IRANSans/woff2/IRANSansX-Light.woff2");
 }
 :root {
   --background: #ffffff;
@@ -30,4 +30,21 @@ body {
   color: var(--foreground);
 }
 
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 transparent;
+}
 
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}

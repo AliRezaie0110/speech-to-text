@@ -35,7 +35,6 @@ export default function SpeechRecorder() {
 
   return (
     <div className="sara flex flex-col justify-center items-center rounded-2xl p-8 text-center">
-      {/* حالت درحال ضبط */}
       {recording ? (
         <button
           onClick={stopRecording}
@@ -52,7 +51,6 @@ export default function SpeechRecorder() {
         </button>
       )}
 
-      {/* باکس متن راهنما */}
       <div className="w-[276px] h-[56px] rounded mt-4 flex items-center justify-center px-2 text-sm text-gray-600 text-center">
         {recording ? (
           'در حال ضبط... برای توقف، دکمه را بزنید'
