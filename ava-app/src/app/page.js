@@ -28,7 +28,8 @@ export default function HomePage() {
 
           </main>}
         {
-          view === 'archive' && <div className="min-h-screen w-full p-6">
+          view === 'archive' &&
+           <div className="min-h-screen w-full">
             <AudioArchive />
           </div>
         }
