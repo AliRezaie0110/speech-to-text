@@ -27,9 +27,11 @@ export default function SpeechTabs() {
         <FileUploader
           display="flex"
           customHeight={280}
-          fileUrl={true}
-          setFileUrl={setFileUrl}
+          //  initialized true to show features detail otherwise give it null to see the base feature  
+          fileUrl={true}     
+          //  initialized true to show features detail otherwise give it null to see the base feature  
           transcript={true}
+          setFileUrl={setFileUrl}
           setTranscript={setTranscript}
         />
       );
