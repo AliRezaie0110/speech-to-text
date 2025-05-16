@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function SpeechBox() {
   const [lang,setLang] = useState("فارسی")
   return (
-    <div className="absolute left-0 mt-[14px] rounded-xl w-[179px] h-[37px] text-[#626262]">
+    <div className="absolute left-80 mt-[14px] rounded-xl w-[179px] h-[37px] text-[#626262]">
       <div className="flex justify-between items-center w-full">
         <label className="text-[14px] whitespace-nowrap">زبان گفتار:</label>
 

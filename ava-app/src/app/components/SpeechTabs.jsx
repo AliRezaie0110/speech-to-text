@@ -6,19 +6,35 @@ import SpeechRecorder from './SpeechRecorder';
 import SpeechBox from './SpeechBox';
 import FileUploader from './FileUploader';
 import LinkInput from './LinkInput';
+import { FiUploadCloud } from 'react-icons/fi';
 
 export default function SpeechTabs() {
+  const [fileUrl, setFileUrl] = useState(null);
+  const [transcript, setTranscript] = useState(null);
   const [activeTab, setActiveTab] = useState('record');
+
 
   const tabs = [
     { id: 'record', label: 'ضبط صدا', icon: <Mic size={20} />, color: '#00BA9F' },
-    { id: 'upload', label: 'بارگذاری فایل', icon: <Upload size={20} />, color: '#118AD3' },
+    { id: 'upload', label: 'بارگذاری فایل', icon: <FiUploadCloud size={20} />, color: '#118AD3' },
     { id: 'link', label: 'لینک', icon: <LinkIcon size={20} />, color: '#FF1654' },
   ];
 
   const renderTabContent = () => {
     if (activeTab === 'record') return <SpeechRecorder />;
-    if (activeTab === 'upload') return <FileUploader display="flex" customHeight={280} />;
+    if (activeTab === 'upload') {
+      return (
+        <FileUploader
+          display="flex"
+          customHeight={280}
+          fileUrl={true}
+          setFileUrl={setFileUrl}
+          transcript={true}
+          setTranscript={setTranscript}
+        />
+      );
+    }
+
     if (activeTab === 'link') return <LinkInput />;
     return null;
   };

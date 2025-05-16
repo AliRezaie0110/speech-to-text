@@ -4,7 +4,6 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
   const getPaginationItems = () => {
     const pages = [];
 
-    // همیشه صفحه اول
     if (currentPage > 3) {
       pages.push(1, '...');
     } else {
@@ -13,14 +12,12 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
       }
     }
 
-    // صفحات اطراف صفحه جاری
     const startPage = Math.max(2, currentPage - 1);
     const endPage = Math.min(totalPages - 1, currentPage + 1);
     for (let i = startPage; i <= endPage; i++) {
       if (!pages.includes(i)) pages.push(i);
     }
 
-    // سه‌نقطه و آخرین صفحه
     if (currentPage < totalPages - 2) {
       pages.push('...', totalPages);
     } else {

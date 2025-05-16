@@ -8,9 +8,8 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { CiTextAlignRight } from "react-icons/ci";
 import { GoClock } from "react-icons/go";
 
-function FileUploader({ display, customHeight }) {
-    const [fileUrl, setFileUrl] = useState(true);
-    const [transcript, setTranscript] = useState(true);
+function FileUploader({ fileUrl, setFileUrl, transcript, setTranscript, display, customHeight }) {
+
     const [tab, setTab] = useState('text');
     const inputRef = useRef(null);
 
@@ -83,57 +82,61 @@ function FileUploader({ display, customHeight }) {
                             {transcript}
                         </p>
                     ) : (
-                        <div className={`flex-1 overflow-y-auto h-[${customHeight}px] w-full mt-4 pr-2 space-y-2 scrollbar-custom`}>
-                            {timestampedTranscript.map((item, idx) => (
-                                <div
-                                    key={idx}
-                                    className="flex  justify-between items-center px-4 py-3 ml-4 text-sm text-[#333] 
+                            <div
+                                className="ali flex-1 overflow-y-auto w-full mt-4 pr-2 space-y-2 scrollbar-custom"
+                                style={{ height: `${customHeight}px` }}
+                            >
+
+                                {timestampedTranscript.map((item, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="flex  justify-between items-center px-4 py-3 ml-4 text-sm text-[#333] 
                                        rounded-[15px] odd:bg-[#F5F5F5] even:bg-white"
-                                >
-                                    <div className="flex items-center justify-between  px-2 gap-8 text-left min-w-[62px] max-h-[62px] w-full">
-                                        <span className="text-[13px] font-medium">{item.end}</span>
-                                        <span className="text-[13px] text-[#7D7D7D]">{item.start}</span>
-                                        <div className="text-[#118AD3] text-sm text-center w-full">
-                                            {item.text}
+                                    >
+                                        <div className="flex items-center justify-between  px-2 gap-8 text-left min-w-[62px] max-h-[62px] w-full">
+                                            <span className="text-[13px] font-medium">{item.end}</span>
+                                            <span className="text-[13px] text-[#7D7D7D]">{item.start}</span>
+                                            <div className="text-[#118AD3] text-sm text-center w-full">
+                                                {item.text}
+                                            </div>
                                         </div>
                                     </div>
+                                ))}
+                            </div>
+
+                            )
+                            ) : (
+                            <div className="flex flex-col items-center justify-center text-center gap-3 h-full">
+                                <div
+                                    className="w-[62px] h-[62px] bg-[#118AD3] rounded-full flex items-center justify-center cursor-pointer"
+                                    onClick={() => inputRef.current?.click()}
+                                >
+                                    <Image src="/upload-Icon.png" width={30} height={25} alt="upload" />
                                 </div>
-                            ))}
+                                <p className="text-[#626262] max-w-[400px]">
+                                    برای بارگذاری فایل گفتاری (صوتی/تصویری)، دکمه را فشار دهید متن پیاده شده آن، در اینجا ظاهر می‌شود
+                                </p>
+                                <input
+                                    ref={inputRef}
+                                    type="file"
+                                    accept="audio/*"
+                                    onChange={handleFileChange}
+                                    className="hidden"
+                                />
+                            </div>
+                )}
                         </div>
 
-                    )
-                ) : (
-                    <div className="flex flex-col items-center justify-center text-center gap-3 h-full">
-                        <div
-                            className="w-[62px] h-[62px] bg-[#118AD3] rounded-full flex items-center justify-center cursor-pointer"
-                            onClick={() => inputRef.current?.click()}
-                        >
-                            <Image src="/upload-Icon.png" width={30} height={25} alt="upload" />
-                        </div>
-                        <p className="text-[#626262] max-w-[400px]">
-                            برای بارگذاری فایل گفتاری (صوتی/تصویری)، دکمه را فشار دهید متن پیاده شده آن، در اینجا ظاهر می‌شود
-                        </p>
-                        <input
-                            ref={inputRef}
-                            type="file"
-                            accept="audio/*"
-                            onChange={handleFileChange}
-                            className="hidden"
-                        />
+            {fileUrl && (
+                    <div className="pt-2 border-t w-full flex items-center justify-center">
+                        <audio controls className="w-[519px] max-h-[34px] rounded-lg">
+                            <source src={fileUrl} type="audio/mpeg" />
+                            مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+                        </audio>
                     </div>
                 )}
             </div>
-
-            {fileUrl && (
-                <div className="pt-2 border-t w-full flex items-center justify-center">
-                    <audio controls className="w-[519px] max-h-[34px] rounded-lg">
-                        <source src={fileUrl} type="audio/mpeg" />
-                        مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
-                    </audio>
-                </div>
-            )}
-        </div>
-    );
+            );
 }
 
-export default FileUploader;
+            export default FileUploader;
