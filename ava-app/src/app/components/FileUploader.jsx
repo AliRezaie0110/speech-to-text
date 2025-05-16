@@ -8,9 +8,9 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { CiTextAlignRight } from "react-icons/ci";
 import { GoClock } from "react-icons/go";
 
-function FileUploader() {
-    const [fileUrl, setFileUrl] = useState(null);
-    const [transcript, setTranscript] = useState(null);
+function FileUploader({ display, customHeight }) {
+    const [fileUrl, setFileUrl] = useState(true);
+    const [transcript, setTranscript] = useState(true);
     const [tab, setTab] = useState('text');
     const inputRef = useRef(null);
 
@@ -42,10 +42,10 @@ function FileUploader() {
     };
 
     return (
-        <div className="w-full h-[600px] flex flex-col justify-between rounded-xl">
+        <div className=" absolute top-0 mt-2 p-2 w-full h-auto flex flex-col justify-between rounded-xl">
 
-            <div className="flex items-center justify-between border-b-[0.25px] border-[#00000080]">
-                <div className="flex gap-6 text-sm">
+            <div className="flex items-start justify-between border-b-[0.25px] border-[#00000080]">
+                <div className=" ali flex gap-6 text-sm">
                     <button
                         onClick={() => setTab('text')}
                         className={`flex items-center gap-1 pb-4 border-b-2 transition ${tab === 'text' ? 'border-black text-black font-semibold' : 'border-transparent cursor-pointer text-gray-500'}`}
@@ -62,7 +62,7 @@ function FileUploader() {
                     </button>
                 </div>
 
-                <div className="flex items-center gap-4 text-[#8F8F8F]">
+                <div className={` ${display} justify-between  items-center gap-4 text-[#8F8F8F] `} >
                     <MdOutlineFileDownload className="cursor-pointer hover:text-black transition" />
                     <RxCopy className="cursor-pointer hover:text-black transition" />
                     <button
@@ -76,21 +76,21 @@ function FileUploader() {
             </div>
 
             {/* Text Content */}
-            <div className="flex-1 w-full overflow-y-auto p-2">
+            <div className="flex-1 w-full overflow-y-auto h-[250px] p-2">
                 {transcript ? (
                     tab === 'text' ? (
                         <p className="text-right whitespace-pre-wrap w-full text-sm text-[#333] leading-loose">
                             {transcript}
                         </p>
                     ) : (
-                        <div className="flex-1 overflow-y-auto max-h-[250px] w-full mt-4 pr-2 space-y-2 scrollbar-custom">
+                        <div className={`flex-1 overflow-y-auto h-[${customHeight}px] w-full mt-4 pr-2 space-y-2 scrollbar-custom`}>
                             {timestampedTranscript.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="flex justify-between items-center px-4 py-3 text-sm text-[#333] 
-                                       rounded-[25px] odd:bg-[#F5F5F5] even:bg-white"
+                                    className="flex  justify-between items-center px-4 py-3 ml-4 text-sm text-[#333] 
+                                       rounded-[15px] odd:bg-[#F5F5F5] even:bg-white"
                                 >
-                                    <div className="flex items-center justify-between px-2 gap-8 text-left min-w-[62px] max-h-[62px] w-full">
+                                    <div className="flex items-center justify-between  px-2 gap-8 text-left min-w-[62px] max-h-[62px] w-full">
                                         <span className="text-[13px] font-medium">{item.end}</span>
                                         <span className="text-[13px] text-[#7D7D7D]">{item.start}</span>
                                         <div className="text-[#118AD3] text-sm text-center w-full">
@@ -125,8 +125,8 @@ function FileUploader() {
             </div>
 
             {fileUrl && (
-                <div className="pt-2 border-t">
-                    <audio controls className="w-full max-h-[34px] rounded-lg">
+                <div className="pt-2 border-t w-full flex items-center justify-center">
+                    <audio controls className="w-[519px] max-h-[34px] rounded-lg">
                         <source src={fileUrl} type="audio/mpeg" />
                         مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
                     </audio>

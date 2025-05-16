@@ -18,7 +18,7 @@ export default function SpeechTabs() {
 
   const renderTabContent = () => {
     if (activeTab === 'record') return <SpeechRecorder />;
-    if (activeTab === 'upload') return <FileUploader />;
+    if (activeTab === 'upload') return <FileUploader display="flex" customHeight={280} />;
     if (activeTab === 'link') return <LinkInput />;
     return null;
   };
@@ -47,7 +47,7 @@ export default function SpeechTabs() {
         </div>
 
         <div
-          className={`rounded-2xl w-[653px] h-[429px] p-6 flex flex-col justify-center items-center ${activeTab === 'record' ? 'rounded-tr-none' : ''
+          className={`relative rounded-2xl w-[653px] h-[429px] p-6 flex flex-col justify-center items-center ${activeTab === 'record' ? 'rounded-tr-none' : ''
             }`}
           style={{ border: `1px solid ${activeColor}` }}
         >

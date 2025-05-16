@@ -8,6 +8,8 @@ import { FiUploadCloud } from "react-icons/fi";
 import { BsDownload } from "react-icons/bs";
 import { VscTrash } from "react-icons/vsc";
 import { Mic, Upload, LinkIcon } from "lucide-react";
+import FileUploader from "./FileUploader";
+import Pagination from "./Pagination";
 
 export default function AudioArchive() {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -18,7 +20,7 @@ export default function AudioArchive() {
     const newExpandedRow = expandedRow === index ? null : index;
     setExpandedRow(newExpandedRow);
 
-    // وقتی ردیف باز میشه یا بسته میشه، صفحه جاری رو به صفحه مربوط به اون ردیف تنظیم کن
+    // set current page to the relevant page 
     const newRowsPerPage = newExpandedRow !== null ? 3 : 8;
     const newPage = Math.floor(index / newRowsPerPage) + 1;
     setCurrentPage(newPage);
@@ -28,124 +30,124 @@ export default function AudioArchive() {
     {
       name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20K ...",
       date: "۱۴۰۰/۰۸/۳۱",
-      type: ".mp3",
+      type: "mp3.",
       duration: "۴:۲۹",
       icon: <LinkIcon size={30} className="bg-[#FF1654] p-2 text-white rounded-full  " />,
     },
     {
       name: "khaterate To",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".mp4",
+      type: "mp4.",
       duration: "۴:۲۸",
       icon: <FiUploadCloud size={30} className="bg-[#118AD3] p-2 text-white rounded-full" />,
     },
     {
       name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20K ...",
       date: "۱۴۰۰/۰۸/۳۱",
-      type: ".mp3",
+      type: "mp3.",
       duration: "۴:۲۹",
       icon: <LinkIcon size={30} className="bg-[#FF1654] p-2 text-white rounded-full  " />,
     },
     {
       name: "khaterate To",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".mp4",
+      type: "mp4.",
       duration: "۴:۲۸",
       icon: <FiUploadCloud size={30} className="bg-[#118AD3] p-2 text-white rounded-full" />,
     },
     {
       name: "https://dls.loudmusic.ir/Music/1401/01/Baraye%20Shervin ...",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".wav",
+      type: "wav.",
       duration: "۳:۱۴",
       icon: <LinkIcon size={30} className="bg-[#FF1654] p-2 text-white rounded-full  " />,
     },
     {
       name: "پادکست رادیو راه - فصل دوم - قسمت ششم- راه سروش",
       date: "۱۴۰۰/۰۸/۱۹",
-      type: ".mp3",
+      type: "mp3.",
       duration: "۱:۲۸:۱۸",
       icon: <Mic size={30} className="bg-[#40C6B8] p-2 text-white rounded-full" />,
     },
     {
       name: "khaterate To",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".mp4",
+      type: "mp4.",
       duration: "۴:۲۸",
       icon: <FiUploadCloud size={30} className="bg-[#118AD3] p-2 text-white rounded-full" />,
     },
     {
       name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20K ...",
       date: "۱۴۰۰/۰۸/۳۱",
-      type: ".mp3",
+      type: "mp3.",
       duration: "۴:۲۹",
       icon: <LinkIcon size={30} className="bg-[#FF1654] p-2 text-white rounded-full  " />,
     },
     {
       name: "khaterate To",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".mp4",
+      type: "mp4.",
       duration: "۴:۲۸",
       icon: <FiUploadCloud size={30} className="bg-[#118AD3] p-2 text-white rounded-full" />,
     },
     {
       name: "https://dls.loudmusic.ir/Music/1401/01/Baraye%20Shervin ...",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".wav",
+      type: "wav.",
       duration: "۳:۱۴",
       icon: <LinkIcon size={30} className="bg-[#FF1654] p-2 text-white rounded-full  " />,
     },
-    
+
     {
       name: "پادکست رادیو راه - فصل دوم - قسمت ششم- راه سروش",
       date: "۱۴۰۰/۰۸/۱۹",
-      type: ".mp3",
+      type: "mp3.",
       duration: "۱:۲۸:۱۸",
       icon: <Mic size={30} className="bg-[#40C6B8] p-2 text-white rounded-full" />,
     },
     {
       name: "khaterate To",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".mp4",
+      type: "mp4.",
       duration: "۴:۲۸",
       icon: <FiUploadCloud size={30} className="bg-[#118AD3] p-2 text-white rounded-full" />,
     },
     {
       name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20K ...",
       date: "۱۴۰۰/۰۸/۳۱",
-      type: ".mp3",
+      type: "mp3.",
       duration: "۴:۲۹",
       icon: <LinkIcon size={30} className="bg-[#FF1654] p-2 text-white rounded-full  " />,
     },
     {
       name: "khaterate To",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".mp4",
+      type: "mp4.",
       duration: "۴:۲۸",
       icon: <FiUploadCloud size={30} className="bg-[#118AD3] p-2 text-white rounded-full" />,
     },
     {
       name: "https://dls.loudmusic.ir/Music/1401/01/Baraye%20Shervin ...",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".wav",
+      type: "wav.",
       duration: "۳:۱۴",
       icon: <LinkIcon size={30} className="bg-[#FF1654] p-2 text-white rounded-full  " />,
     },
     {
       name: "پادکست رادیو راه - فصل دوم - قسمت ششم- راه سروش",
       date: "۱۴۰۰/۰۸/۱۹",
-      type: ".mp3",
+      type: "mp3.",
       duration: "۱:۲۸:۱۸",
       icon: <Mic size={30} className="bg-[#40C6B8] p-2 text-white rounded-full" />,
     },
     {
       name: "khaterate To",
       date: "۱۴۰۰/۰۸/۲۰",
-      type: ".mp4",
+      type: "mp4.",
       duration: "۴:۲۸",
       icon: <FiUploadCloud size={30} className="bg-[#118AD3] p-2 text-white rounded-full" />,
     },
-  
+
   ];
 
   const totalPages = Math.ceil(data.length / rowsPerPage);
@@ -156,7 +158,7 @@ export default function AudioArchive() {
     <div className="w-full max-w-[1034px] mx-auto">
       <h2 className="text-[#00BA9F] text-[24px] mt-[80px] font-semibold mb-6 text-right">آرشیو من</h2>
 
-      <div className="overflow-x-auto rounded-lg">
+      <div className="rounded-lg">
         <div className="">
           <table className="w-full table-auto text-right border-separate border-spacing-y-2">
 
@@ -170,13 +172,13 @@ export default function AudioArchive() {
               </tr>
             </thead>
             <tbody>
-              
+
               {visibleData.map((item, index) => {
                 const globalIndex = startIndex + index;
                 return (
                   <Fragment key={globalIndex}>
                     <tr
-                      className="border-b cursor-pointer hover:shadow-sm hover:rounded-2xl  hover:bg-gray-50 text-[#000000]"
+                      className="border-b  cursor-pointer hover:shadow-sm hover:rounded-2xl  hover:bg-gray-50 text-[#000000]"
                       onClick={() => toggleRow(globalIndex)}
                     >
                       <td className="py-2 px-2">{item.icon}</td>
@@ -195,19 +197,17 @@ export default function AudioArchive() {
                     </tr>
 
                     {expandedRow === globalIndex && (
-                      <tr className="bg-blue-50 h-[300px] border">
-                        <td colSpan={6} className="p-4">
-                          <div className="transition-all duration-300 ease-in-out">
-                            <p className="mb-2">
-                              <strong>توضیحات:</strong> اطلاعات بیشتر درباره فایل "{item.name}"
-                            </p>
-                            <audio controls className="w-[500px] h-[34px] mt-2">
-                              <source src="#" type="audio/mpeg" />
-                              مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
-                            </audio>
+                      <tr>
+                        <td colSpan={6}>
+                          <div className="relative p-2 m-2 h-[300px] border border-[#00BA9F] rounded-lg">
+                            <div className="transition-all duration-300 ease-in-out">
+                              <FileUploader display="hidden" customHeight={150} />
+                            </div>
                           </div>
                         </td>
                       </tr>
+
+
                     )}
                   </Fragment>
                 );
@@ -218,31 +218,12 @@ export default function AudioArchive() {
       </div>
 
       {/* Pagination controls */}
-      <div className="flex justify-center mt-4 space-x-2 rtl:space-x-reverse">
-        <button
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage(currentPage - 1)}
-          className="px-3 py-1 border rounded disabled:opacity-30"
-        >
-          قبلی
-        </button>
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-1 border rounded ${currentPage === i + 1 ? "bg-teal-500 text-white" : ""}`}
-          >
-            {i + 1}
-          </button>
-        ))}
-        <button
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage(currentPage + 1)}
-          className="px-3 py-1 border rounded disabled:opacity-30"
-        >
-          بعدی
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={356}
+        setCurrentPage={setCurrentPage}
+      />
+
     </div>
   );
 }
