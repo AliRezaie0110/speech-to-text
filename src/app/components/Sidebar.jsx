@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { CiFolderOn, CiMicrophoneOn } from 'react-icons/ci';
+import { PiWaveform } from "react-icons/pi";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -13,7 +14,7 @@ export default function Sidebar() {
 
       {/* Logo */}
       <div className="flex items-center gap-2 mb-8">
-        <Image src="/icon-ava.png" width={19} height={38} alt="icon ava" />
+        <PiWaveform size={40} />
         <h1 className="text-[20px] font-bold">آوا</h1>
       </div>
 
